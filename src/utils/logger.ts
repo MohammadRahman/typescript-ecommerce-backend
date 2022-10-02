@@ -1,0 +1,10 @@
+import pino from "pino";
+
+export const log = pino({
+  transport: {
+    target: "pino-pretty",
+  },
+  base: {
+    pid: false,
+  },
+});
