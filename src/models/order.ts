@@ -8,8 +8,7 @@ export interface OrderInput {
   status: boolean;
   userId: UserDocument["_id"];
   productId: ProductDocument["_id"];
-  price: number
-
+  price: number;
 }
 export interface OrderDocument extends OrderInput, Document {
   createdAt: Date;
@@ -23,10 +22,12 @@ const orderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: USER_MODEL,
     },
-    productId: [{
-      type: Schema.Types.ObjectId,
-      ref: PRODUCT_MODEL,
-    }],
+    productId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: PRODUCT_MODEL,
+      },
+    ],
     status: {
       type: Boolean,
       default: false,
@@ -34,7 +35,7 @@ const orderSchema = new Schema(
     price: Number,
     expiresAt: {
       type: Date,
-      default: () => moment().add(30, 'days').calendar()
+      default: () => moment().add(30, "days").calendar(),
     },
   },
   { timestamps: true }

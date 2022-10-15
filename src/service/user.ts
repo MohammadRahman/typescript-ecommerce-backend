@@ -17,3 +17,4 @@ export async function loginService(email: string) {
     throw new Error(error);
   }
 }
+// wanna check releases in action
