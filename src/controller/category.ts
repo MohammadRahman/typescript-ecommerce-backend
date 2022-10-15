@@ -18,10 +18,9 @@ export async function createCategoryHandler(
 }
 export async function getCategoryHadnler(req: Request, res: Response) {
   try {
-    const category = await getCategoryService()
-    return res.status(StatusCodes.OK).json(category)
-
+    const category = await getCategoryService();
+    return res.status(StatusCodes.OK).json(category);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }

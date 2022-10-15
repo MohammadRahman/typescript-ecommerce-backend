@@ -1,17 +1,15 @@
 // import { CategoryInput } from './category';
 import mongoose from "mongoose";
 
-
 export enum CategoryEnum {
-  Tv = 'tv',
-  It = 'it',
-  Phones = 'phone',
-  Audion = 'audio',
-  Appliance = 'appliance',
-  Housekeeping = 'housekeeping',
-  Kitchen = 'kitchen',
-  Entertainment = 'entertainment'
-
+  Tv = "tv",
+  It = "it",
+  Phones = "phone",
+  Audion = "audio",
+  Appliance = "appliance",
+  Housekeeping = "housekeeping",
+  Kitchen = "kitchen",
+  Entertainment = "entertainment",
 }
 export interface CategoryInput {
   name: CategoryEnum;
@@ -26,8 +24,10 @@ const categorySchema = new mongoose.Schema(
     name: {
       type: String,
       enum: Object.values(CategoryEnum),
-    }
-  }, { timestamps: true });
+    },
+  },
+  { timestamps: true }
+);
 
 export const CATERGORY = mongoose.model<CategoryDocument>(
   "Category",
