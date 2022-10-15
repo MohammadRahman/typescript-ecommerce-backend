@@ -25,10 +25,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - name: Code Check
-      run: npm run code:check
+    - run: npm run code:check
     - name: Versioning wiht semantic-release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: npx semantic-release
+    - run: npx semantic-release
     - name: Build
       if: github.event_name == 'push'
     - run: npm run build
