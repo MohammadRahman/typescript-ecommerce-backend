@@ -16,7 +16,9 @@ afterAll(async () => {
 describe("Product", () => {
   it("should return 404", async () => {
     const productId = "product-123";
-    await request(app).get(`/api/1.0.0/get/products/${productId}`).expect(404);
+  const product =  await request(app).get(`/api/1.0.0/get/products/${productId}`)
+      
+      expect(400).toBe(product.statusCode)
   });
 });
 // later need to add tests files
