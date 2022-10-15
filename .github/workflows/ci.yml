@@ -26,4 +26,3 @@ jobs:
     - run: npm ci
     - run: npm run code:check
     - name: Build Project
-      if: github.event_name == 'push'
