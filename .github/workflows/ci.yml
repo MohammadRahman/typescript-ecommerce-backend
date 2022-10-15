@@ -26,4 +26,4 @@ jobs:
     - run: npm ci
     - run: npm run code:check
     - name: Build Project
-    - run: npm run build
+      run: npm run build
