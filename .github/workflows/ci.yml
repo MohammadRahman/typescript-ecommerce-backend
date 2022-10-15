@@ -1,12 +1,21 @@
-name: CI PIPe
+name: Node.js CI
+
 on:
-  pull_request:
-    branches: [develop]
   push:
-    branches: [develop]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   build:
+
     runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -14,20 +23,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      run: npm ci
-    - name: Code formating check
+    - run: npm ci
+    - name: Code Check
       run: npm run code:check
-    - name: Aws authentication
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        aws-region: eu-north-1
-    - name: Build Project
-      if: git.event_name == 'push' && github.ref == 'refs/heads/develop'
-      run: npm run build
-    - name: Create Release
+    - name: Versioning wiht semantic-release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: npx semantic-release
-      env:
-         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build
+      if: github.event_name == 'push'
+    - run: npm run build
+
