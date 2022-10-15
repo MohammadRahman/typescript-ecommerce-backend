@@ -1,10 +1,21 @@
-
 import { Express, Response, Request } from "express";
 import { processRequestBody } from "zod-express-middleware";
-import { createCategoryHandler, getCategoryHadnler } from "../controller/category";
-import { createOrderHandler, findAllOrdersDetail, findOneAndUpdateOrder, findOneOrderHandler } from "../controller/orders";
 import {
-  createProductHandler, deleteProductHandler, findOneProduct, getAllProducts, updateProduct
+  createCategoryHandler,
+  getCategoryHadnler,
+} from "../controller/category";
+import {
+  createOrderHandler,
+  findAllOrdersDetail,
+  findOneAndUpdateOrder,
+  findOneOrderHandler,
+} from "../controller/orders";
+import {
+  createProductHandler,
+  deleteProductHandler,
+  findOneProduct,
+  getAllProducts,
+  updateProduct,
 } from "../controller/product";
 import { createSubCategoryHandler } from "../controller/sub-category";
 import { createUserHandler, loginHandler } from "../controller/user";
@@ -40,11 +51,7 @@ export const routes = (app: Express) => {
   );
   // Get all Products
   app.get("/api/1.0.0/get/products", getAllProducts);
-  app.get(
-    "/api/1.0.0/get/product/:id",
-    validate(getProduct),
-    findOneProduct
-  );
+  app.get("/api/1.0.0/get/product/:id", validate(getProduct), findOneProduct);
   // update one Product
   app.put(
     "/api/1.0.0/product/update/:id",
@@ -63,9 +70,9 @@ export const routes = (app: Express) => {
     validate(createOrderSchema),
     createOrderHandler
   );
-  app.get('/api/1.0.0/get/order/:id', findOneOrderHandler),
-    app.put('/api/1.0.0/update/order/:id', findOneAndUpdateOrder),
-    app.get('/api/1.0.0/get/all/orders', findAllOrdersDetail),
+  app.get("/api/1.0.0/get/order/:id", findOneOrderHandler),
+    app.put("/api/1.0.0/update/order/:id", findOneAndUpdateOrder),
+    app.get("/api/1.0.0/get/all/orders", findAllOrdersDetail),
     /*Protecte Routes*/
 
     // requires sign-in
@@ -90,7 +97,7 @@ export const routes = (app: Express) => {
     validate(createCategorySchema),
     createCategoryHandler
   );
-  app.get('/api/1.0.0/get/category', getCategoryHadnler)
+  app.get("/api/1.0.0/get/category", getCategoryHadnler);
   /*SubCategory Routes*/
   app.post(
     "/api/1.0.0/create/sub-category",

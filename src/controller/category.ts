@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import { Request, Response } from "express";
 import { createCategory, getCategoryService } from "../service/category";
 import { createCategoryInput } from "../schema/category";
-import { omit } from "../helpers";
+// import { omit } from "../helpers";
 
 export async function createCategoryHandler(
   req: Request<{}, {}, createCategoryInput["body"]>,
@@ -18,10 +18,9 @@ export async function createCategoryHandler(
 }
 export async function getCategoryHadnler(req: Request, res: Response) {
   try {
-    const category = await getCategoryService()
-    return res.status(StatusCodes.OK).json(category)
-
+    const category = await getCategoryService();
+    return res.status(StatusCodes.OK).json(category);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
