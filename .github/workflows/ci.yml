@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "develop" ,"main"]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "develop" ,"main"]
 
 jobs:
   build:
@@ -27,3 +27,6 @@ jobs:
     - run: npm run code:check
     - name: Build Project
       run: npm run build
+    - name: Create a new Release
+      if: github.event_name == 'push' && github.ref == 'refs/head/main'
+      run: npx semantic-release
