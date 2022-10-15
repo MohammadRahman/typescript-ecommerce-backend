@@ -6,7 +6,7 @@ on:
     branches: [develop]
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14x]
