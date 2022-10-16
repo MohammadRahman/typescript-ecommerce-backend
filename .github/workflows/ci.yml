@@ -29,4 +29,5 @@ jobs:
       run: npm run build
     - run: sudo pm2 restart backend
     - name: Create a Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: npx semantic-release
