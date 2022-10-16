@@ -11,7 +11,7 @@ export default{
                 assets: [
                     { path: 'build.zip', label: 'Build' }
                     // add more path like test coverage
-                    // { path: 'coverage.zip', label: 'Coverage' },
+                   // { path: 'coverage.zip', label: 'Coverage' },
                 ]
             }
         ]
