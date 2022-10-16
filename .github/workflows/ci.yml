@@ -30,7 +30,7 @@ jobs:
       run: npx semantic-release
       env:
          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+        #  NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: Build Project
       run: npm run build
     - run: sudo pm2 restart backend
