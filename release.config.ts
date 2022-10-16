@@ -1,5 +1,5 @@
 export default{
-    branches: 'main',
+    branches: ['main'],
     repositoryUrl: 'https://github.com/MohammadRahman/typescript-ecommerce-backend',
     plugins: [
         '@semantic-release/commit-analyzer',
