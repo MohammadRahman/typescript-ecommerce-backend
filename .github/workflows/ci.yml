@@ -25,9 +25,12 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run code:check
+    - name: Create a new Release
+      if: github.event_name == 'push' && github.ref == 'refs/head/main'
+    # - run: npx semantic-release
+    - run: |
+       npm i -g bats
+       bats -v
     - name: Build Project
       run: npm run build
     - run: sudo pm2 restart backend
-    - name: Create a new Release
-      if: github.event_name == 'push' && github.ref == 'refs/head/main'
-    - run: npx semantic-release
